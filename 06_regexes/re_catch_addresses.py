@@ -66,17 +66,18 @@ Pete.Nordstrom@nordstrom.com'''
 # Or the same example with ^(\d{1,}\s{1,}.+\s{1,}.+)(\s{1,}.+\d{1,})$. More flexible solution will be to play with groups and * (in case there's zero index or zero street mentions.
 result = re.findall(r'^(\d+\s+.+\s+.+)(\s+.+\d+)$', text, re.MULTILINE)
 
+# pattern for multiple commas in a string
 pattern = re.compile(r'(,)+')
 
 addresses_list = []
 
 for x in result:
-    result = ','.join(str(i) for i in x)
+    addr = ','.join(str(i) for i in x)
     # substituing newline symbols wth a comma
-    result = re.sub(r'\n',', ', result)
+    addr = re.sub(r'\n',', ', addr)
     # for making code more explicit, i use re.compile pattern to delete double commas
-    result = re.sub(pattern, ',', result)
-    addresses_list.append(result)
+    addr = re.sub(pattern, ',', addr)
+    addresses_list.append(addr)
 
 for addr in addresses_list:
     print(addr)
