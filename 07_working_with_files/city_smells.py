@@ -12,13 +12,13 @@ def text_preprocess(text, lower=True, delete_punct=True):
     Args and params:
         ---------------
         text: str
-        Text to process.
+            Text to process.
 
         lower: True/False
-        Converts a text to a lowercase.
+            Converts a text to a lowercase.
 
         delete_punct: True/False
-        Delete or not the punctuation.
+            Delete or not the punctuation.
     """
 
     if lower:
@@ -101,8 +101,6 @@ def text_analysis(filename):
         sentences_sorted = sorted(sent_word_tokenized[0:-4], key=len)
         min_len_sent = sentences_sorted[0]
         max_len_sent = sentences_sorted[-1]
-        # min_len_sent_tokenized = nltk.tokenize.word_tokenize(min_len_sent)
-        # max_len_sent_tokenized = nltk.tokenize.word_tokenize(max_len_sent)
         sent_max_vs_min_len_coeff = len(max_len_sent) / len(min_len_sent)
 
         ##################
@@ -168,7 +166,6 @@ def text_analysis(filename):
     # using io to avoid ascii and encoding errors
     with io.open('data/data.json', 'w', encoding='utf-8') as f:
         f.write(json.dumps(data, ensure_ascii=False))
-
 
     print()
     print('Average sentence length by characters size:', int(avg_sent_len_by_char))
