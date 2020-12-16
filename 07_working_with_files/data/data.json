@@ -1,0 +1,1 @@
+{"sentence_stats": [{"avg_sent_len_by_char": 126, "avg_sent_len_by_word": 17, "max_length_sentence": 36, "min_len_sent": 4, "sent_max_vs_min_len_coeff": 9, "avg_punctuation_marks_len": 3}], "words_stats": [{"avg_word_len": 5, "max_len_word": 17, "min_len_word": 1, "word_max_vs_min_len_coeff": 17, "all words count": 601, "unique_words_count": 319, "unique_words_proportion": 53}]}
