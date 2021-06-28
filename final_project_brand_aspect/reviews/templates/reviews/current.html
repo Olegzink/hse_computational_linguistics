@@ -1,0 +1,104 @@
+{% extends 'reviews/base.html' %}
+{% load static %}
+{% load js %}
+{% block content %}
+
+
+<div class="card-semi-transparent pt-3 col-12 text-center">
+    <h3 class='box-title text-center'>Current review</h3>
+
+    <h4 class="blockquote blockquote-info">
+        {{ review.review_text }}
+    </h4>
+
+    <div class="col-12 text-center mb-3">
+        <h4 class='box-title text-center'>
+
+            <span class='brand_name_data' style="font-size:18px"><i class="mdi mdi-file-document-box text-muted"></i> Total phrases:</span>
+            <span class='brand_real_data' style="font-size:18px"> {{ phrases_len }}</span>
+
+            <a href="#" data-toggle="tooltip" data-placement="top" title="" class="nolink" data-original-title="Sentiment score" aria-describedby="tooltip">
+                <span class='brand_name_data ml-3' style="font-size:18px">Overall sentiment:</span>
+                {% if review.overall_sentiment == "pos"%}
+                <div class='badge badge-success-table align-middle'> positive </div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {% else %}
+                <div class='badge badge-danger-table align-middle'> negative </div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {% endif %}
+            </a>
+
+            <span class='brand_name_data' style="font-size:18px"><i class="mdi mdi-file-document-box text-muted align-middle"></i> Key aspects:</span>
+
+            {% for x in aspects_list %}
+
+            <a href="/aspects/{{x}}/"><div class='badge badge-info-table align-middle'>{{x}} </div></a>
+            {% endfor %}
+
+            <span class='brand_real_data text-danger' style="font-size:18px"> {{ x.negative_pubs_total }} </span>
+
+        </h4>
+    </div>
+
+</div>
+
+
+<div class="col-12 text-left mt-5">
+    <h3 class='box-title text-center'>Analysis by phrases</h3>
+
+    {% for x in phrases %}
+    <div class="mt-4">
+        <b>{{ forloop.counter }}</b>.
+            {% if x.sentiment == "neg" %}
+            <div class='badge badge-danger-table align-right'>Negative</div>
+            {% else %}
+            <div class='badge badge-success-table align-right'>Positive</div>
+            {% endif %}
+        &nbsp;{{ x.phrase_text }}
+            {% if x.aspect|length > 2 %}
+            <span class="text-info">{{ x.aspect }}</span>
+            {% endif %}
+        <br>
+    </div>
+
+    {% endfor %}
+
+
+</div>
+
+<!--
+<div class="col-12 text-center mt-5 pl-5 pr-5">
+
+
+    <h3 class='box-title text-center'>Analysis of Intentions</h3>
+
+    {% if intentions_list_all %}
+
+        {% for x in intentions_list_all %}
+
+    <i class="mdi text-danger mdi-trending-up align-middle"></i> <span class='brand_real_data' style="font-size:21px; font-weight: 400; color: #000;"> {{ x }} </span>
+
+        {% endfor %}
+
+    {% else %}
+
+        No intentions found
+
+    {% endif %}
+</div>
+-->
+
+<!-- DONUT  CHART 0  -->
+<script src="{% static 'blog/js/amcharts/mycharts/pr/about_us/donut_chart_pubs_0.js' %}" type="text/javascript"></script>
+
+<!-- DONUT  CHART 1  -->
+<script src="{% static 'blog/js/amcharts/mycharts/pr/about_us/donut_chart_pubs_1.js' %}" type="text/javascript"></script>
+
+<!-- DONUT  CHART 2  -->
+<script src="{% static 'blog/js/amcharts/mycharts/pr/about_us/donut_chart_pubs_2.js' %}" type="text/javascript"></script>
+
+<!-- SLIDER  -->
+<script src="{% static 'blog/js/swiper/js/swiper.js' %}"></script>
+<script src="{% static 'blog/js/swiper/js/swiper.min.js' %}"></script>
+
+
+{% endblock %}
+

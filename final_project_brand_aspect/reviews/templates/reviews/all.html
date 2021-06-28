@@ -1,0 +1,47 @@
+{% extends 'reviews/base.html' %}
+{% load static %}
+{% load render_table from django_tables2 %}
+{% load js %}
+{% block content %}
+
+<!-- Loading data json for charts -->
+<script type="text/javascript">
+    var donut_chart_data = {{ donut_chart_data | js }};
+</script>
+<!-- end Loading data -->
+
+<!--
+{% for x in reviews %}
+    <p><a href="/reviews/{{ x.review_id }}">{{ x.review_text }}</a></p>
+{% endfor %}
+-->
+
+<div class="col-12 text-center mt-0">
+    {% if '/reviews/all/positive' in request.path %}
+        <!-- do not show chart -->
+    {% elif '/reviews/all/negative' in request.path %}
+        <!-- do not show chart -->
+    {% else %}
+        <div id="donut_chart_all"></div>
+    {% endif %}
+        <h3 class='box-title text-center'><b>{{ reviews_len }}</b> {% if sentiment == 'None' %} positive and negative {% else %} {{ sentiment }} {% endif %} reviews: </h3>
+</div>
+
+
+<div class="col-12 mt-1">
+    <div class="table table-responsive-sm table-bordered table-hover">
+        {% render_table table %}
+    </div>
+</div>
+
+<!-- SEPARATOR -->
+<div class="col-12 text-center mb-3">
+<hr></hr>  
+</div>
+
+<!-- DONUT  CHART  -->
+<script src="{% static 'reviews/js/amcharts/mycharts/reviews/donut_chart_all.js' %}" type="text/javascript"></script>
+
+
+{% endblock %}     
+

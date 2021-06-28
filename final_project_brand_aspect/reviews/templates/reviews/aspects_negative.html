@@ -1,0 +1,38 @@
+{% extends 'reviews/base.html' %}
+{% load static %}
+{% load js %}
+{% block content %}
+
+
+<div class="col-12 mt-1 text-center">
+    {% for tkn in token_class_flat_list %}
+    <a href="/aspects/negative/{{ tkn }}"><div class='badge badge-info-table align-middle'>{{tkn}} </div></a>
+    {% endfor %}
+</div>
+
+<div class="col-12 text-left mt-5">
+    <h3 class='box-title text-center'><b>{{aspect}}</b>: negative phrases <b>{{negative_phrases|length}}</b></h3>
+
+    {% for x in negative_phrases %}
+    <div class="mt-4">
+        <b>{{ forloop.counter }}</b>.
+        {% if x.sentiment == "neg" %}
+        <div class='badge badge-danger-table align-right'>Negative</div>
+        {% endif %}
+        &nbsp;{{ x.phrase_text }}
+        {% if x.aspect|length > 2 %}
+        <span class="text-info">{{ x.aspect }}</span>
+        {% endif %}
+        <br>
+    </div>
+
+    {% endfor %}
+
+</div>
+
+
+
+
+
+{% endblock %}
+

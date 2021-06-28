@@ -1,0 +1,339 @@
+<div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+
+<!-- #############################################################
+######################## UPLOAD DATA #############################
+##################################################################-->
+
+    {% if '/data_process/submit_review/' in request.path %}
+
+        <li class="nav-item active">
+        <a class="nav-link active" href="/data_process/submit_review/"><i class="mdi mdi-upload menu-icon mr-2" style="opacity: 1;"></i>Upload Data</a>
+
+    {% else %}
+
+        <li class="nav-item">
+        <a class="nav-link" href="/data_process/submit_review/"><i class="mdi mdi-upload menu-icon mr-2" style="opacity: 1;"></i>Upload Data</a>
+
+    {% endif %}
+
+<!-- #############################################################
+########################### ANALYTICS ############################
+##################################################################-->
+
+    {% if '/reviews/analytics/' in request.path %}
+
+        <li class="nav-item active">
+        <a class="nav-link active" href="/reviews/analytics/"><i class="mdi mdi-chart-bar menu-icon mr-2" style="opacity: 1; "></i>Analytics</a>
+
+    {% else %}
+
+        <li class="nav-item">
+        <a class="nav-link" href="/reviews/analytics/"><i class="mdi mdi-chart-bar menu-icon mr-2" style="opacity: 1; "></i>Analytics</a>
+
+    {% endif %}
+
+        <hr class="hr_active_menu"></hr>
+
+<!-- #############################################################
+########################### REVIEWS ##############################
+##################################################################-->
+
+    {% if '/reviews/' in request.path %}
+
+        <li class="nav-item active">
+        <a class="nav-link active" data-toggle="collapse" href="#mass-media" aria-expanded="false" aria-controls="mass-media">
+            <span class="menu-title">Reviews</span>
+            <i class="mdi mdi-chevron-down align-middle" style="opacity:0.4;"></i>
+        </a>
+        <div class="collapse show" id="mass-media">
+
+    {% else %}
+
+        <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#mass-media" aria-expanded="false" aria-controls="mass-media">
+            <span class="menu-title">Reviews</span>
+            <i class="mdi mdi-chevron-down align-middle" style="opacity:0.4;"></i>
+        </a>
+        <div class="collapse" id="mass-media">
+
+    {% endif %}
+
+    <!-- #################### REVIEWS INNER MENU ######################### -->
+
+    <ul class="nav flex-column sub-menu">
+
+        {% if '/reviews/all/positive/' in request.path %}
+
+            <li class="nav-item"> <a class="nav-link active" href="/reviews/all/positive"><i class="mdi mdi-subdirectory-arrow-right align-middle" style="opacity:0.7;"></i>Positive</a></li>
+
+        {% else %}
+
+            <li class="nav-item"> <a class="nav-link" href="/reviews/all/positive"><i class="mdi mdi-subdirectory-arrow-right align-middle" style="opacity:0.4;"></i>Positive</a></li>
+        
+        {% endif %}
+
+        {% if '/reviews/all/negative/' in request.path %}
+        
+            <li class="nav-item"> <a class="nav-link active" href="/reviews/all/negative"><i class="mdi mdi-subdirectory-arrow-right align-middle" style="opacity:0.7;"></i>Negative</a></li>
+        
+        {% else %}
+            <li class="nav-item"> <a class="nav-link" href="/reviews/all/negative"><i class="mdi mdi-subdirectory-arrow-right align-middle" style="opacity:0.4;"></i>Negative</a></li>
+        
+        {% endif %}
+
+        {% if '/reviews/all/' in request.path %}
+
+            <li class="nav-item"> <a class="nav-link active" href="/reviews/all/"><i class="mdi mdi-subdirectory-arrow-right align-middle" style="opacity:0.7;"></i>All</a></li>
+
+        {% else %}
+
+            <li class="nav-item"> <a class="nav-link" href="/reviews/all/"><i class="mdi mdi-subdirectory-arrow-right align-middle" style="opacity:0.4;"></i>All</a></li>
+
+        {% endif %}
+
+    </ul>
+        <hr class="hr_active_menu"></hr>
+        </div>
+    </li>
+
+<!-- #############################################################
+########################### ASPECTS ##############################
+##################################################################-->
+
+    {% if '/aspects' in request.path %}
+
+        <li class="nav-item active">
+            <a class="nav-link active" data-toggle="collapse" href="#perception" aria-expanded="false" aria-controls="perception">
+                <span class="menu-title">Aspects</span>
+                <i class="mdi mdi-chevron-down align-middle" style="opacity:0.4;"></i>
+            </a>
+            <div class="collapse show" id="perception">
+
+    {% elif '/aspects' in request.path %}
+
+        <li class="nav-item active">
+            <a class="nav-link active" data-toggle="collapse" href="#perception" aria-expanded="false" aria-controls="perception">
+                <span class="menu-title">Aspects</span>
+                <i class="mdi mdi-chevron-down align-middle" style="opacity:0.4;"></i>
+            </a>
+            <div class="collapse show" id="perception">
+
+    {% else %}
+
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#perception" aria-expanded="false" aria-controls="mass-media">
+                <span class="menu-title">Aspects</span>
+                <i class="mdi mdi-chevron-down align-middle" style="opacity:0.4;"></i>
+            </a>
+            <div class="collapse" id="perception">
+
+    {% endif %}
+
+    <!-- #################### ASPECTS INNER MENU ######################### -->
+
+        <ul class="nav flex-column sub-menu">
+
+            {% if '/aspects/pos' in request.path %}
+
+                <li class="nav-item"> <a class="nav-link active" href="/brand/mass_media_perception/"><i class="mdi mdi-subdirectory-arrow-right align-middle" style="opacity:0.7;"></i>Positive</a></li>
+
+            {% else %}
+
+                <li class="nav-item"> <a class="nav-link" href="/brand/mass_media_perception/"><i class="mdi mdi-subdirectory-arrow-right align-middle" style="opacity:0.4;"></i>Positive</a></li>
+            {% endif %}
+
+            {% if '/aspects/negative/' in request.path %}
+
+                <li class="nav-item"> <a class="nav-link active" href="/aspects/negative/"><i class="mdi mdi-subdirectory-arrow-right align-middle" style="opacity:0.7;"></i>Negative</a></li>
+
+            {% else %}
+
+                <li class="nav-item"> <a class="nav-link" href="/aspects/negative/"><i class="mdi mdi-subdirectory-arrow-right align-middle" style="opacity:0.4;"></i>Negative</a></li>
+
+            {% endif %}
+
+            <!--
+            {% if '/aspects/all/' in request.path %}
+
+                <li class="nav-item"> <a class="nav-link active" href="/aspects/room/"><i class="mdi mdi-subdirectory-arrow-right align-middle" style="opacity:0.7;"></i>By class</a></li>
+
+            {% else %}
+
+                <li class="nav-item"> <a class="nav-link" href="/aspects/room/"><i class="mdi mdi-subdirectory-arrow-right align-middle" style="opacity:0.4;"></i>By class</a></li>
+
+            {% endif %}
+            -->
+
+            {% if '/aspects/all/' in request.path %}
+
+                <li class="nav-item"> <a class="nav-link active" href="/aspects/all/"><i class="mdi mdi-subdirectory-arrow-right align-middle" style="opacity:0.7;"></i>All</a></li>
+
+            {% else %}
+
+                <li class="nav-item"> <a class="nav-link" href="/aspects/all/"><i class="mdi mdi-subdirectory-arrow-right align-middle" style="opacity:0.4;"></i>All</a></li>
+
+            {% endif %}
+
+
+        </ul>
+        <hr class="hr_active_menu"></hr>
+        </div>
+    </li>
+
+<!-- #############################################################
+########################### INTENTIONS ###########################
+##################################################################-->
+
+    {% if '/intentions/all/' in request.path %}
+
+        <li class="nav-item active">
+            <a class="nav-link active" data-toggle="collapse" href="#search" aria-expanded="false" aria-controls="search">
+                <span class="menu-title">Intentions</span>
+                <i class="mdi mdi-chevron-down align-middle" style="opacity:0.4;"></i>
+            </a>
+        <div class="collapse show" id="search">
+
+    {% else %}
+
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#search" aria-expanded="false" aria-controls="search">
+                <span class="menu-title">Intentions</span>
+                <i class="mdi mdi-chevron-down align-middle" style="opacity:0.4;"></i>
+            </a>
+        <div class="collapse" id="search">
+
+    {% endif %}
+
+    <!-- #################### INTENTIONS INNER MENU ######################### -->
+
+        {% if '/search/general/' in request.path %}
+
+            <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link active" href="/search/general/"><i class="mdi mdi-subdirectory-arrow-right align-middle" style="opacity:0.7;"></i>Intentions Positive</a></li>
+                {% else %}
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item"> <a class="nav-link" href="/search/general/"><i class="mdi mdi-subdirectory-arrow-right align-middle" style="opacity:0.4;"></i>Intentions positive</a></li>
+                </ul>
+
+        {% endif %}
+
+        {% if '/search/website_rank/' in request.path %}
+
+            <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link active" href="/search/website_rank/"><i class="mdi mdi-subdirectory-arrow-right align-middle" style="opacity:0.7;"></i>Intentions negative</a></li>
+            </ul>
+            
+        {% else %}
+            
+            <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="/search/website_rank/"><i class="mdi mdi-subdirectory-arrow-right align-middle" style="opacity:0.4;"></i>Intentions negative</a></li>
+            </ul>
+
+        {% endif %}
+
+        {% if '/intentions/all/' in request.path %}
+
+            <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link active" href="/intentions/all/"><i class="mdi mdi-subdirectory-arrow-right align-middle" style="opacity:0.7;"></i>All</a></li>
+            </ul>
+
+        {% else %}
+
+            <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="/intentions/all/"><i class="mdi mdi-subdirectory-arrow-right align-middle" style="opacity:0.4;"></i>All</a></li>
+            </ul>
+
+        {% endif %}
+
+        </div>
+    </li>
+
+    <hr class="hr_sidebar"></hr>
+
+<!-- #############################################################
+########################### LEXICONS #############################
+##################################################################-->
+
+    {% if '/lexicons/' in request.path %}
+
+        <li class="nav-item active">
+            <a class="nav-link active" data-toggle="collapse" href="#activity" aria-expanded="false" aria-controls="activity">
+                <span class="menu-title">Lexicons</span>
+                <i class="mdi mdi-chevron-down align-middle" style="opacity:0.4;"></i>
+                <div class="badge badge-pill badge-outline-success align-middle" style="margin-left: 42px;">{{ request.session.total_activities }}</div>
+            </a>
+        
+        <div class="collapse show" id="activity">
+            <ul class="nav flex-column sub-menu">
+
+    {% else %}
+
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#activity" aria-expanded="false" aria-controls="activity">
+                <span class="menu-title">Lexicons</span>
+                <i class="mdi mdi-chevron-down align-middle" style="opacity:0.4;"></i>
+                <div class="badge badge-pill badge-outline-success align-middle" style="margin-left: 42px;">{{ request.session.total_activities }}</div>
+            </a>
+        
+        <div class="collapse" id="activity">
+            <ul class="nav flex-column sub-menu">
+
+    {% endif %}
+
+    <!-- #################### LEXICONS INNER MENU ######################### -->
+
+        {% if '/lexicons/sentiment_tokens/positive/' in request.path %}
+            
+        <li class="nav-item"> <a class="nav-link active" href="/lexicons/sentiment_tokens/positive"><i class="mdi mdi-subdirectory-arrow-right align-middle" style="opacity:0.7;"></i>Positive tokens</a></li>
+        
+        {% else %}
+
+            <li class="nav-item"> <a class="nav-link" href="/lexicons/sentiment_tokens/positive"><i class="mdi mdi-subdirectory-arrow-right align-middle" style="opacity:0.4;"></i>Positive tokens</a></li>
+
+        {% endif %}
+
+        {% if '/lexicons/sentiment_tokens/negative' in request.path %}
+
+            <li class="nav-item"> <a class="nav-link active" href="/lexicons/sentiment_tokens/negative"><i class="mdi mdi-subdirectory-arrow-right align-middle" style="opacity:0.7;"></i>Negative tokens <div class="badge badge-pill badge-outline-success align-middle" style="margin-left: 69px;">{{ request.session.total_activities }}</div> </a></li>
+
+        {% else %}
+
+            <li class="nav-item"> <a class="nav-link" href="/lexicons/sentiment_tokens/negative"><i class="mdi mdi-subdirectory-arrow-right align-middle" style="opacity:0.4;"></i>Negative tokens<div class="badge badge-pill badge-outline-success align-middle" style="margin-left: 69px;">{{ request.session.total_activities }}</div> </a> </li>
+
+        {% endif %}
+
+        {% if '/lexicons/thematic_tokens/' in request.path %}
+
+            <li class="nav-item"> <a class="nav-link active" href="/lexicons/thematic_tokens/"><i class="mdi mdi-subdirectory-arrow-right align-middle" style="opacity:0.7;"></i>Thematic / class tokens</a></li>
+
+        {% else %}
+
+            <li class="nav-item"> <a class="nav-link" href="/lexicons/thematic_tokens/"><i class="mdi mdi-subdirectory-arrow-right align-middle" style="opacity:0.4;"></i>Thematic / class tokens</a></li>
+
+        {% endif %}
+
+            </ul>
+        </div>
+    </li>
+
+    <hr class="hr_sidebar"></hr>
+
+
+<!-- #############################################################
+######################### NPS SCORE ##############################
+##################################################################-->
+<!--
+    <a href="#">NPS score&nbsp;&nbsp;<i class="mdi mdi-emoticon align-middle"></i></a>
+    <br><br><br><br><br><br><br><br>
+-->
+    </div>
+</div>
+
+
+<div class="container-scroller">
+
+    <!-- Sidebar close button -->
+    <button class="openbtn" id="sidebarOpen" onclick="openNav()">☰ </button>
+    <!-- sidebar main wrapper -->
+    <div id="sidebar_main_wrapper">

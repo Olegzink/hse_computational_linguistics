@@ -1,0 +1,331 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <!-- Required meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Brand Aspect</title>
+      <!-- Favicon -->
+    <link rel="shortcut icon" type="image/png" href="{% static 'reviews/images/favicon.png' %}">
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="{% static 'reviews/css/iconfonts/mdi/css/materialdesignicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'reviews/css/vendor.bundle.base.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900&amp;subset=cyrillic" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:300,400,700,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'reviews/js/swiper/css/swiper.css' %}">
+    <link rel="stylesheet" href="{% static 'reviews/js/swiper/css/swiper.min.css' %}">
+    <link rel="stylesheet" href="{% static 'reviews/css/dashboard.css' %}">
+
+    <!-- FULLCALENDAR SOURCES -->    
+
+    <link rel='stylesheet' href="{% static 'reviews/fullcalendar/core/main.css' %}" />
+    <link rel='stylesheet' href="{% static 'reviews/fullcalendar/daygrid/main.css' %}" />
+
+    <script src="{% static 'reviews/fullcalendar/core/main.js' %}"></script>
+    <script src="{% static 'reviews/fullcalendar/daygrid/main.js' %}"></script>
+
+    <!-- END FULLCALENDAR -->
+
+    <!-- JQUERY -->
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>    
+
+    <!-- DATE PICKER SOURCES -->  
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+    <!-- END DATE PICKER SOURCES --> 
+
+{% block extrahead %}
+    <!-- Amcharts Styles -->
+        <style>
+        #chartdiv, #chart {
+          width: 100%;
+          height: 500px;
+        }
+
+        #chart3div {
+          width: 100%;
+          height: 500px;
+        }
+
+        #gantt_chart {
+          width: 100%;
+          height: 500px;
+        }
+
+        #chart4div {
+          width: 100%;
+          height: 500px;
+        }
+
+        #radar_chart_1 {
+          width: 100%;
+          height: 380px;
+        }
+
+        #bar_chart_0, #bar_chart_moz, #bar_chart_indexed {
+          width: 100%;
+          height: 380px;
+        }
+
+        #bar_chart_publications, #bar_chart_newsletter, #bar_chart_website, #bar_chart_facebook {
+          width: 100%;
+          height: 380px;
+        }
+
+        .amcharts-AxisLabelCircular  {
+          font-size: 12px !important;
+          font-weight: 300;
+        }
+
+        .amcharts-Legend {
+            font-size: 13px !important;
+            font-weight: 400;
+        }
+
+        .amcharts-AxisLabel {
+          font-size: 13px;
+          font-weight: 400;
+        }
+
+        #donut_chart_pubs_0, #donut_chart_all {
+          width: 100%;
+          height: 380px;
+
+          /*with image inside */
+          /* background: transparent url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-160/so1.png) no-repeat center 130px;*/
+
+          /*with svg*/
+          /*  background-image: url('data:image/svg+xml;utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path fill="%232196F3" d="M 5,3L 19,3L 20.7359,6L 20.7304,6C 20.9018,6.29149 21,6.63428 21,7L 21,19C 21,20.1046 20.1046,21 19,21L 5,21C 3.89543,21 3,20.1046 3,19L 3,7C 3,6.638 3.09618,6.29846 3.26437,6L 3.26135,6L 5,3 Z M 5.57294,4L 5,5L 5,5L 19,5L 18.4303,4L 5.57294,4 Z M 7,12L 12,17L 17,12L 14,12L 14,10L 10,10L 10,12L 7,12 Z "></path></svg>');
+          background-repeat: no-repeat;
+          background-position: 185px 150px;*/
+        }
+
+        #donut_chart_0, #donut_chart_pubs_1, #donut_chart_pubs_2 {
+          width: 100%;
+          height: 380px;
+        }
+
+        #donut_social_0, #donut_social_1 {
+          width: 100%;
+          height: 380px;
+        }
+
+        #donut_chart_1 {
+          width: 100%;
+          height: 380px;
+        }
+
+        #radar_adjectives, #radar_adjectives_2, #radar_adjectives_3, #radar_adjectives_4, #radar_adjectives_5, #radar_features, #radar_features_compet_1 {
+          width: 100%;
+          height: 470px; 
+        }
+
+        #column_brands, #column_brands_compet_1, #column_brands_compet_2,#column_brands_compet_3, #column_brands_compet_4 {
+          width: 100%;
+          height: 380px;
+        }
+
+        #column_adjectives {
+          width: 100%;
+          height: 380px;
+        }
+
+        #donut_chart_2 {
+          width: 100%;
+          height: 380px;
+        }
+
+        #chart_with_images_div {
+          width: 100%;
+          height: 480px;
+          padding-bottom: 15px;
+        }
+
+        #time_chart {
+          width: 100%;
+          height: 480px;
+        }
+
+        #calendar_buble {
+          width: 100%;
+          height: 570px;
+        }
+
+        #xy_trends, #xy_comparative_total_pubs, #xy_pubs_shares, #campare_activities_xy, #dominance_xy, #xy_pubs_inbound, #xy_pubs_brand_occurencies, #xy_pubs_size, #xy_pubs_negative, #xy_comparative_calendar, #xy_comparative_dangerous_pubs, #xy_comparative_interviews, #xy_activity_calendar, #xy_activity_publications, #xy_activity_email, #xy_activity_website, #xy_activity_facebook, #xy_all_pubs {           
+          width: 100%;
+          height: 570px;
+        }
+
+        #bar_chart_total_pubs, #bar_chart_keywords_sum, #bar_chart_aspects_pos, #bar_chart_aspects_neg {
+          width: 100%;
+          height: 370px;
+        }
+
+        #calendar_xy  {
+          width: 100%;
+          height: 570px;
+        }
+
+        #time_chart2, #search_volumes, #audit_xy_0 {
+          width: 100%;
+          height: 480px;
+        }
+
+        #radar_heat_0 {
+          width: 100%;
+          height: 480px;
+        }
+
+        #solid_chart_0, #solid_chart_1, #solid_comparative {
+          width: 100%;
+          height: 480px;
+        }
+
+        select {
+          font-size: 20px;
+          padding: 5px 10px;
+        }
+
+        /* loader gif */
+        .modal_save_progress {
+            display:    none;
+            position:   fixed;
+            z-index:    1000;
+            top:        0;
+            left:       0;
+            height:     100%;
+            width:      100%;
+            background: rgba( 255, 255, 255, .8 )
+                        url(	{% static 'reviews/images/ajax-loader.gif' %} )
+                        50% 50%
+                        no-repeat;
+          }
+
+          /* When the body has the loading class, we turn
+            the scrollbar off with overflow:hidden */
+          body.loading .modal_save_progress {
+              overflow: hidden;
+          }
+
+          /* Anytime the body has the loading class, our
+            modal element will be visible */
+          body.loading .modal_save_progress {
+              display: block;
+          }
+
+        </style>
+
+        <script src="{% static 'reviews/js/amcharts/core.js' %}"></script>
+        <script src="{% static 'reviews/js/amcharts/charts.js' %}"></script>
+        <script src="{% static 'reviews/js/amcharts/themes/animated.js' %}"></script>
+        <script src="{% static 'reviews/js/amcharts/themes/dataviz.js' %}"></script>
+
+{% endblock %}
+</head>
+
+<body data-gr-c-s-loaded="true" class="horizontal-menu horizontal-menu-full-width">
+
+<!-- #############################################################
+############################  Sidebar ############################
+##################################################################-->
+
+{% include "reviews/sidebar.html" %}
+
+<!-- #############################################################
+############################ End Sidebar #########################
+##################################################################-->
+
+<!-- prohibit display for smartphones -->
+<!--
+  <div class="small-resolution-message text-center">
+    Please use desktop or tablet to view the platform contents.
+  </div>
+-->
+
+<!-- #############################################################
+########################### Top Menu  ############################
+##################################################################-->
+
+{% include "reviews/top_menu.html" %}
+
+<!-- #############################################################
+########################### Content # ############################
+##################################################################-->
+
+      <div class="content-wrapper">
+
+          <div class="row">
+          {% block content %}
+          {% endblock %}
+
+          </div>
+      </div>
+
+<!-- #############################################################
+########################### Footer ###############################
+##################################################################-->
+
+{% include "reviews/footer.html" %}
+
+  
+        </div>
+        <!-- main-panel ends --> 
+      </div>
+      <!-- page-body-wrapper ends --> 
+
+    </div>
+    <!-- container-scroller -->
+
+<!-- sidebar end -->
+</div>
+
+<!-- #############################################################
+########################### Scripts ##############################
+##################################################################-->
+
+<!-- plugins:js -->
+<script src="{% static 'reviews/js/vendor.bundle.base.js' %}"></script>
+<script src="{% static 'reviews/js/vendor.bundle.addons.js' %}"></script>
+<!-- endinject -->
+<!-- Plugin js for this page-->
+<!-- End plugin js for this page-->
+<!-- inject:js -->
+<script src="{% static 'reviews/js/off-canvas.js' %}"></script>
+<script src="{% static 'reviews/js/misc.js' %}"></script>
+<!-- endinject -->
+<!-- Custom js for this page-->
+<script src="{% static 'reviews/js/dashboard.js' %}"></script>
+<!-- End custom js for this page-->
+<script src="{% static 'reviews/js/off-canvas.js' %}"></script>
+<script src="{% static 'reviews/js/settings.js' %}"></script>
+<script src="{% static 'reviews/js/tooltips.js' %}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    
+<script>
+function openNav() {
+  document.getElementById("mySidebar").style.width = "295px";
+  document.getElementById("sidebar_main_wrapper").style.marginLeft = "295px";
+  document.getElementById("sidebarOpen").style.display = "none";
+  document.getElementById("footerLogo").style.marginLeft = "35px";
+};
+
+function closeNav() {
+  document.getElementById("mySidebar").style.width = "0";
+  document.getElementById("sidebar_main_wrapper").style.marginLeft= "0";
+  document.getElementById("sidebarOpen").style.display = "block";
+  document.getElementById("footerLogo").style.marginLeft = "0px";
+};
+</script>
+
+
+  </body>
+</html>

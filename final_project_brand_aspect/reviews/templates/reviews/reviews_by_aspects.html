@@ -1,0 +1,59 @@
+{% extends 'reviews/base.html' %}
+{% load static %}
+{% load js %}
+{% block content %}
+
+<!-- Loading data json for charts -->
+<script type="text/javascript">
+  var phrases_donut_chart_data = {{ phrases_donut_chart_data | js }};
+</script>
+<!-- end Loading data -->
+
+<div class="col-12 mt-1 text-center">
+    {% for tkn in token_class_flat_list %}
+          <a href="/aspects/{{ tkn }}"><div class='badge badge-info-table align-middle'>{{tkn}} </div></a>
+    {% endfor %}
+</div>
+
+<div class="col-12 text-center mt-3">
+    <h3 class='box-title text-center'><b>{{ phrases_len }}</b> phrases by the specified aspect: <b>{{ aspect }}</b></h3>
+
+    <!-- Donut chart -->
+    <div class="col-12 text-center mt-0">
+        <div class="card-transparent">
+                <div class="card-body-pr">
+                    <div id="donut_chart_pubs_1"><br></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Donut chart -->
+
+<div class="card-semi-transparent col-12 text-left mt-3 p-4">
+
+    {% for x in phrases %}
+
+        <div class="mt-2">
+            <b>{{ forloop.counter }}</b>.&nbsp;
+
+            {% if x.sentiment == "neg" %}
+                <div class='badge badge-danger-table align-right'>Negative</div>
+            {% else %}
+                <div class='badge badge-success-table align-right'>Positive</div>
+            {% endif %}
+                
+            &nbsp;{{ x.phrase_text }}
+
+            <br><br>
+        </div>
+
+    {% endfor %}
+
+</div>
+
+<!-- DONUT  CHART 1  -->
+<script src="{% static 'reviews/js/amcharts/mycharts/pr/about_us/donut_chart_pubs_1.js' %}" type="text/javascript"></script>
+
+
+{% endblock %}
+

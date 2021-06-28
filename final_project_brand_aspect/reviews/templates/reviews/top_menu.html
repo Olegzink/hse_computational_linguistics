@@ -1,0 +1,184 @@
+{% load static %}
+
+<nav class="navbar horizontal-full-width-layout-navbar navbar-expand-lg  fixed-top">
+    <div class="navbar-top">
+        <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-start">
+
+<!-- ############################################################### -->
+<!-- ########################### Logo ############################## -->
+<!-- ############################################################### -->
+
+
+            <a class="navbar-brand brand-logo" href="http://semantiqa.com">
+                <img src="{% static 'reviews/images/logo_good.svg' %}" alt="logo"></a> <a class="navbar-brand brand-logo-mini" href="http://semantiqa.com"><img src="{% static 'reviews/images/logo-mini-text.svg' %}" alt="logo"></a> </div>
+        <a class="navbar-brand brand-logo-mini" href="http://www.bootstrapdash.com/demo/purple/jquery/index.html"></a>
+
+        <div class="navbar-menu-wrapper d-flex flex-grow"><a class="navbar-brand brand-logo-mini"  href="http://www.bootstrapdash.com/demo/purple/jquery/index.html"></a>
+
+            <ul class="navbar-nav navbar-nav-left navbar-collapse collapse justify-content-center" id="horizontal-top-example" style="">
+                <a class="navbar-brand brand-logo-mini" href="http://www.bootstrapdash.com/demo/purple/jquery/index.html">
+                </a>
+
+
+<!-- ############################################################### -->
+<!-- ############################ TOP MENU ######################### -->
+<!-- ############################################################### -->
+
+                <!--<li class="nav-item"> <a class="nav-link" href="#">Weekly:</a></li>-->
+
+                {% if '/reputational_alerts/' in request.path  %}
+                <li class="nav-item"> <a class="nav-link active" href="/brand/reputational_alerts/">Reputational score&nbsp;&nbsp; <div class="badge badge-pill badge-danger align-middle">{{ request.session.negative_alerts_count }}</div></a></li>
+                {% else %}
+                <li class="nav-item"> <a class="nav-link text-muted" href="/brand/reputational_alerts/">Reputational score &nbsp;&nbsp; <div class="badge badge-pill badge-danger align-middle">{{ request.session.negative_alerts_count }}</div> <i class="mdi mdi-heart mdi-thumb-up text-success mr-2" style="opacity: 0.8"></i> </a></li>
+                {% endif %}
+
+                <!--
+                <li class="nav-item"> <a class="nav-link" href="/performance/" ><i class="mdi mdi mdi-table-large mr-2" style="opacity: 0.4"></i>Data export</a></li>
+                -->
+
+            </ul>
+
+            <ul class="navbar-nav navbar-nav-right">
+
+<!-- ############################################################### -->
+<!-- ####################### Notifications ######################### -->
+<!-- ############################################################### -->
+    <!--
+    <li class="nav-item dropdown"> <a class="nav-link count-indicator dropdown-toggle" href="http://www.bootstrapdash.com/demo/purple/jquery/pages/layout/horizontal-menu-2.html#" id="notification-dropdown" data-toggle="dropdown"> <i class="mdi mdi-bell-ring mdi-24px text-primary"></i>
+        <span class="count-number bg-gradient-warning">5</span> </a>
+      <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notification-dropdown">
+        <h6 class="p-3 mb-0">Notifications</h6>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item preview-item">
+          <div class="preview-thumbnail">
+            <div class="preview-icon bg-success"> <i class="mdi mdi-calendar"></i>
+            </div>
+          </div>
+          <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+            <h6 class="preview-subject font-weight-normal mb-1">Event
+              today</h6>
+            <p class="text-gray ellipsis mb-0"> Just a reminder that
+              you have an event today </p>
+          </div>
+        </a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item preview-item">
+          <div class="preview-thumbnail">
+            <div class="preview-icon bg-warning"> <i class="mdi mdi-settings"></i>
+            </div>
+          </div>
+          <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+            <h6 class="preview-subject font-weight-normal mb-1">Settings</h6>
+            <p class="text-gray ellipsis mb-0"> Update dashboard </p>
+          </div>
+        </a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item preview-item">
+          <div class="preview-thumbnail">
+            <div class="preview-icon bg-info"> <i class="mdi mdi-link-variant"></i>
+            </div>
+          </div>
+          <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
+            <h6 class="preview-subject font-weight-normal mb-1">Launch
+              Admin</h6>
+            <p class="text-gray ellipsis mb-0"> New admin wow! </p>
+          </div>
+        </a>
+        <div class="dropdown-divider"></div>
+        <h6 class="p-3 mb-0 text-center">See all notifications</h6>
+      </div>
+    </li>
+    -->
+
+<!-- ############################################################### -->
+<!-- ##################### Time Period selector #################### -->
+<!-- ############################################################### -->
+                <!--
+                <div class="dropdown">
+                    <button class="btn btn-outline-success btn-sm dropdown-toggle mr-5" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Choose Period: <b> {{ request.session.selectedPeriod }} </b></button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <h6 class="dropdown-header">Set time period filter:</h6>
+                        <div class="dropdown-divider"></div>
+
+                        <a class="dropdown-item" onclick="selectTimePeriodOneWeek()" id='one_week' value="oneWeek" href="#">1 week</a>
+                        <a class="dropdown-item" onclick="selectTimePeriodTwoWeeks()" id='two_weeks' value="twoWeeks" href="#">2 weeks</a>
+                        <a class="dropdown-item" onclick="selectTimePeriodThreeWeeks()" id='three_weeks' value="threeWeeks" href="#">3 weeks</a>
+                        <a class="dropdown-item" onclick="selectTimePeriodOneMonth()" id='one_month' value="oneMonth" href="#">1 month</a>
+                        <a class="dropdown-item" onclick="selectTimePeriodThreeMonths()" id='three_months' value="threeMonths" href="#">3 months</a>
+                        <a class="dropdown-item" onclick="selectTimePeriodSixMonths()" id='six_months' value="sixMonths" href="#">6 months</a>
+                        <a class="dropdown-item" onclick="selectTimePeriodOneYear()" id='one_year' value="oneYear" value="oneYear" href="#">1 year</a>
+                    </div>
+                </div>
+                -->
+
+<!-- ############################################################### -->
+<!-- ######################## User Profile ######################### -->
+<!-- ############################################################### -->
+
+                {% if user.is_authenticated %}
+                <li class="nav-item nav-profile dropdown">
+
+                    <a class="nav-link dropdown-toggle" id="profileDropdown" href="/profile/" data-toggle="dropdown" aria-expanded="false">
+
+                        <div class="nav-profile-img">
+                            {#  <i class="mdi mdi-account-box-outline text-muted"></i> #}
+
+                            <img src="{% static 'reviews/images/faces/gravatar.png' %}"
+                                 alt="image">
+
+                            <span class="availability-status online"></span>
+                        </div>
+                        <div class="nav-profile-text">
+                            <p class="mb-1 text-black"><b>{{ user.username }}</b></p>
+                            <p class="font-weight-light mb-0">{{ user.userprofile.brand_name }}</p>
+                        </div>
+                    </a>
+                    <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
+                        <a class="dropdown-item" href="/profile/">
+                            <i class="mdi mdi-account-box-outline text-success"></i> &nbsp&nbsp Profile </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/accounts/logout/">
+                            <i class="mdi mdi-logout mr-2 text-primary"></i> Signout </a>
+                    </div>
+                </li>
+            </ul>
+            <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center ml-auto collapsed" type="button" data-toggle="collapse" data-target="#horizontal-top-example" aria-expanded="false"> <span class="mdi mdi-menu"></span> </button>
+        </div>
+    </div>
+
+    {% else %}
+    <li class="nav-item nav-profile dropdown"> <a class="nav-link dropdown-toggle" id="profileDropdown" href="/profile/{{ user.id }}" data-toggle="dropdown" aria-expanded="false">
+        <div class="nav-profile-img">
+            {#  <i class="mdi mdi-account-box-outline text-muted"></i> #}
+
+            <img src="{% static 'reviews/images/faces/gravatar.png' %}"
+                 alt="image">
+
+            <span class="availability-status online"></span>
+        </div>
+        <div class="nav-profile-text">
+            <p class="mb-1 text-black"><b>REGISTER</b></p>
+            <p class="font-weight-light mb-0"></p>
+        </div>
+    </a>
+        <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
+            <a class="dropdown-item" href="/profile/{{ user.id }}">
+                <i class="mdi mdi-account-box-outline text-success"></i> &nbsp&nbsp Profile </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/accounts/logout/">
+                <i class="mdi mdi-logout mr-2 text-primary"></i> Signout </a>
+        </div>
+    </li>
+    </ul>
+    <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center ml-auto collapsed"
+
+            type="button" data-toggle="collapse" data-target="#horizontal-top-example"
+
+            aria-expanded="false"> <span class="mdi mdi-menu"></span> </button>
+    </div>
+
+    </div>
+
+    {% endif %}
+
+</nav>
