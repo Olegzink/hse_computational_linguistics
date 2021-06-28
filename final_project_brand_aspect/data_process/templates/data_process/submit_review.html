@@ -1,0 +1,108 @@
+{% extends 'reviews/base.html' %}
+{% load static %}
+{% load render_table from django_tables2 %}
+{% load js %}
+{% block content %}
+
+<div class="col-12 center mt-0">
+
+    <h3 class='box-title text-center'>Choose the sentiment classification method</h3>
+    <select id="select_sentence_number" onchange="selectNum()" class="custom-select" style="width: 20%;">
+        <!-- мин набор каждого по 4 артикля -->
+        <option value="0">---</option>
+        <option value="aggregated">Aggregation (lexicon + ML)</option>
+        <option value="ml_model">ML model</option>
+        <option value="doc2vec">Doc2vec model</option>
+    </select>
+
+    <h2 class='box-title text-center'>Submit review</h2>
+
+    <textarea id="text_correct_div" onChange="inputIdGetter(event)" placeholder="Submit your review" cols="100" rows="5", style="display: block; margin-left: auto;
+    margin-right: auto;">
+    </textarea><br>
+
+    <div class='text-center'>
+        <a class="btn btn-info btn-fw btn-sm mb-5" id="processReview" style="color: white; display: block; margin-left: auto; margin-right: auto; width: 15%"> Submit </a>
+    </div>
+
+</div>
+
+<!-- Ajax-loader.gif - indicates saving in progress -->
+<div class="modal_save_progress"></div>
+
+<div class="col-12 text-center">
+    <div class="done_msg" style="display:none;
+            background: green; font-size: 25px; color: #fff">Processign data...</div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+function selectNum() {
+    var selNumObj = document.getElementById("select_sentence_number");
+    var selNum = selNumObj.options[selNumObj.selectedIndex].value;
+    // alert(selLang);
+    reviewData.classificationMethod = selNum;
+    console.log(selNum);
+    return selNum;
+};
+
+
+let reviewData = {
+    "classificationMethod": 0,
+	"reviewText": 0,
+};
+
+function inputIdGetter(e) {
+	gotEditedText = document.getElementById("text_correct_div").value;
+	reviewData.reviewText = gotEditedText;
+};
+
+console.log(reviewData);
+let pathname = window.location.pathname;
+
+$body = $("body");
+
+$(document).on({
+    ajaxStart: function() { $body.addClass("loading");    },
+     ajaxStop: function() { $body.removeClass("loading"); }
+});
+
+$(document).ready(function(){
+	$('#processReview').click(function(){
+        $(".done_msg").show();   
+		$.ajax({
+				url: pathname,
+				type: "post",
+				data: JSON.stringify(reviewData),
+				processData: false,
+				contentType: "application/json; charset=UTF-8",
+				dataType:'json',
+				headers: {'X-CSRFToken': '{{ csrf_token }}'}, // for csrf token
+                 
+				success: function(data) {
+					//   alert('success');
+                    console.log('success'); 
+					// window.location = pathname;
+
+				},
+
+				error: function(data) {
+                    console.log('Error');       
+				},
+
+				complete: function(data) {
+                    gotReviewId = data['responseJSON'];
+                    console.log(gotReviewId);   
+                    window.location = gotReviewId["redirect_url"];
+                    $(".done_msg").show();
+				},
+		});
+	});
+});
+
+</script>
+
+{% endblock %}     
+
